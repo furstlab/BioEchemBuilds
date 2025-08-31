@@ -34,11 +34,11 @@ export const Home = () => {
       className="min-h-screen flex flex-col justify-center relative bg-black"
     >
       <RevealOnScroll>
-        <div className="text-center z-10 px-4 pt-24">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-100 to-blue-700 bg-clip-text text-transparent leading-right">
+        <div className="text-center z-10 px-2 pt-10 md:px-4 md:pt-24">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-6 bg-gradient-to-r from-cyan-100 to-blue-700 bg-clip-text text-transparent leading-tight">
             BioEchem⚡Builds
           </h1>
-          <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg mb-4 md:mb-8 max-w-xs sm:max-w-md md:max-w-lg mx-auto">
             The increasing interdisciplinarity of biology requires an accessible toolkit.
             This database provides fabrication solutions for bioelectrochemcial experiments
             and serves as a repository to open-source custom builds for scientists.
