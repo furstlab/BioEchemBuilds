@@ -76,7 +76,7 @@ a:hover, a:focus {
 /* Optional: Support dark mode */
 @media (prefers-color-scheme: dark) {
   html, body {
-    background: linear-gradient(135deg, #052c2f 0%, #031a1e 100%);
+    background: linear-gradient(135deg, #5cb7ae 0%, #031a1e 100%);
     color: #c3f6ee;
   }
   a {
