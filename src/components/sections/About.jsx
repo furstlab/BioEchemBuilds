@@ -23,7 +23,9 @@ export const About = () => {
 
           <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
             <p className="text-gray-300 mb-6">
-              Collection of builds for biological electromistry.
+              Collection of builds for biological electrochemistry. 
+              Published designs/protocols on Github and protocol.io for communit enagement.
+
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -63,7 +65,7 @@ export const About = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
-              <h3 className="text-xl font-bold mb-4"> 🏫 Started @MIT </h3>
+              <h3 className="text-xl font-bold mb-4"> 🏫 Started @ Furst Lab MIT </h3>
               <ul className="list-disc list-inside text-gray-300 space-y-2">
                 <li>
                   <strong> Department of Chemical Engineering </strong> 
