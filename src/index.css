@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/* Base Styles */
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Space Grotesk", "Inter", "ui-sans-serif", "system-ui", sans-serif;
+  background: linear-gradient(135deg, #b8ffec 0%, #e0f7fa 100%);
+  color: #0a0a0a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* Removed custom scrollbar code */
+
+@layer utilities {
+  /* Blinking animation for caret or attention */
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  .animate-blink {
+    animation: blink 0.8s step-end infinite;
+  }
+
+  /* Loading bar shimmer */
+  @keyframes loading {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(250%);
+    }
+  }
+  .animate-loading-bar {
+    animation: loading 0.8s cubic-bezier(0.4,0,0.2,1) infinite;
+    background: linear-gradient(90deg, #8bf3d0 25%, #208aba 75%);
+    border-radius: 9999px;
+    height: 4px;
+  }
+}
+
+/* Smooth reveal animation for scroll and fade in */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition:
+    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Optional: Nice link styles */
+a {
+  color: #188889;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+a:hover, a:focus {
+  color: #11767a;
+  text-decoration: underline;
+}
+
+/* Optional: Support dark mode */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background: linear-gradient(135deg, #052c2f 0%, #031a1e 100%);
+    color: #c3f6ee;
+  }
+  a {
+    color: #84d5c4;
+  }
+  a:hover, a:focus {
+    color: #b8ffec;
+  }
+}
+
