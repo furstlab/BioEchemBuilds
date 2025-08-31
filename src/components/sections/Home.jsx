@@ -74,14 +74,14 @@ export const Home = () => {
           </a>
           <a href="https://furstlab.mit.edu/" target="_blank" rel="noopener noreferrer">
             <img
-              src="https://raw.githubusercontent.com/swath1pen/bioreactor/main/logo.png"
+              src="https://raw.githubusercontent.com/swath1pen/bioreactor/main/logos/lab_logo.png"
               alt="Furst Lab Logo"
               className="w-12 h-auto mx-auto cursor-pointer opacity-90 hover:opacity-100 transition"
             />
           </a>
           <a href="https://www.protocols.io/workspaces/furstlab" target="_blank" rel="noopener noreferrer">
             <img
-              src="https://raw.githubusercontent.com/swath1pen/bioreactor/main/logomark.png"
+              src="https://raw.githubusercontent.com/swath1pen/bioreactor/main/logos/protocol_logo.png"
               alt="protocol.io Logo"
               className="w-12 h-auto mx-auto cursor-pointer opacity-90 hover:opacity-100 transition"
             />
