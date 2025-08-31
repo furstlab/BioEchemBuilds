@@ -44,7 +44,7 @@ export const Home = () => {
           and serves as a repository to open-source custom builds for scientists.
         </p>
           {/* 3D object viewer centered and close to the title */}
-          <div className="mx-auto my-6 w-full max-w-md h-98 rounded-xl bg-gray-800 flex items-center justify-center shadow-lg">
+          <div className="mx-auto my-6 w-full max-w-md h-64 rounded-xl bg-gray-800 flex items-center justify-center shadow-lg">
             <Canvas
               camera={{ position: [0, 0, 4] }}
               style={{ background: 'black' }} // <-- add this line for black background
