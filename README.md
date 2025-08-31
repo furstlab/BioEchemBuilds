@@ -1,6 +1,8 @@
-# BioEchemBuilds Databse
+# BioEchem⚡Builds Databse
 
-This repository contains source code for the BioEchemBuilds database of fabrication projects for microbial electrochemistry. Designs are included with links to **CAD files**, **NIH 3D** depositories, assembly protcols from **protocols.io**. Everything you need to begin your bioelectrochemical experimentation.
+This repository contains source code for the BioEchem⚡Builds database of fabrication projects for microbial electrochemistry. Designs are included with links to **CAD files**, **NIH 3D** depositories, assembly protcols from **protocols.io**. Everything you need to begin your bioelectrochemical experimentation.
+
+Explore: https://furstlab.github.io/BioEchemBuilds
 
 ## Contributing
 
