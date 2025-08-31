@@ -56,37 +56,38 @@ export const Home = () => {
             </Canvas>
           </div>
           
-          <div className="w-full flex justify-center items-center mt-8 mb-8 space-x-12">
-            <a
-              href="https://github.com/furstlab"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center"
+          <div className="w-full flex justify-center items-center mt-8 mb-8 space-x-8">
+          <a
+            href="https://github.com/furstlab"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center"
+          >
+            <svg
+              className="w-8 h-8 fill-current text-white drop-shadow-lg transition"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
             >
-              <svg
-                className="w-18 h-18 fill-current text-white drop-shadow-lg transition"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M12 .296c-6.6 0-12 5.4-12 12 0 5.3 3.438 9.799 8.207 11.387.6.113.793-.262.793-.583 0-.288-.011-1.244-.016-2.26-3.338.726-4.042-1.611-4.042-1.611-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.808 1.304 3.493.997.108-.775.418-1.304.762-1.605-2.665-.304-5.466-1.333-5.466-5.933 0-1.31.469-2.381 1.236-3.222-.124-.303-.535-1.524.117-3.176 0 0 1.008-.323 3.3 1.23.957-.266 1.984-.399 3.003-.404 1.018.005 2.045.138 3.003.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.874.119 3.176.77.841 1.234 1.912 1.234 3.222 0 4.61-2.803 5.625-5.473 5.924.429.37.823 1.1.823 2.219 0 1.604-.015 2.897-.015 3.293 0 .323.192.699.801.581C20.565 22.092 24 17.592 24 12.296c0-6.6-5.4-12-12-12"/>
-              </svg>
-            </a>
-            <a href="https://furstlab.mit.edu/" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://raw.githubusercontent.com/swath1pen/bioreactor/main/logo.png"
-                alt="Furst Lab Logo"
-                className="w-24 h-auto mx-auto cursor-pointer opacity-90 hover:opacity-100 transition"
-              />
-            </a>
-            <a href="https://www.protocols.io/workspaces/furstlab" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://raw.githubusercontent.com/swath1pen/bioreactor/main/logomark.png"
-                alt="protocol.io Logo"
-                className="w-24 h-auto mx-auto cursor-pointer opacity-90 hover:opacity-100 transition"
-              />
-            </a>
-          </div>
+              <path d="M12 .296c-6.6 0-12 5.4-12 12 0 5.3 3.438 9.799 8.207 11.387.6.113.793-.262.793-.583 0-.288-.011-1.244-.016-2.26-3.338.726-4.042-1.611-4.042-1.611-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.808 1.304 3.493.997.108-.775.418-1.304.762-1.605-2.665-.304-5.466-1.333-5.466-5.933 0-1.31.469-2.381 1.236-3.222-.124-.303-.535-1.524.117-3.176 0 0 1.008-.323 3.3 1.23.957-.266 1.984-.399 3.003-.404 1.018.005 2.045.138 3.003.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.874.119 3.176.77.841 1.234 1.912 1.234 3.222 0 4.61-2.803 5.625-5.473 5.924.429.37.823 1.1.823 2.219 0 1.604-.015 2.897-.015 3.293 0 .323.192.699.801.581C20.565 22.092 24 17.592 24 12.296c0-6.6-5.4-12-12-12"/>
+            </svg>
+          </a>
+          <a href="https://furstlab.mit.edu/" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://raw.githubusercontent.com/swath1pen/bioreactor/main/logo.png"
+              alt="Furst Lab Logo"
+              className="w-12 h-auto mx-auto cursor-pointer opacity-90 hover:opacity-100 transition"
+            />
+          </a>
+          <a href="https://www.protocols.io/workspaces/furstlab" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://raw.githubusercontent.com/swath1pen/bioreactor/main/logomark.png"
+              alt="protocol.io Logo"
+              className="w-12 h-auto mx-auto cursor-pointer opacity-90 hover:opacity-100 transition"
+            />
+          </a>
+        </div>
+
 
           <div className="flex justify-center space-x-4">
             <a
