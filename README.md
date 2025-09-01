@@ -4,7 +4,7 @@ This repository contains source code for the BioEchem⚡Builds database of fabri
 
 Explore Builds: https://furstlab.github.io/BioEchemBuilds
 
-<img width="1394" height="774" alt="Screen Shot 2025-08-31 at 10 51 47 PM" src="https://github.com/user-attachments/assets/954d830b-f8f5-4a2c-8139-d3de5deab760" />
+<img width="697" height="387" alt="Screen Shot 2025-08-31 at 10 51 47 PM" src="https://github.com/user-attachments/assets/954d830b-f8f5-4a2c-8139-d3de5deab760" />
 
 
 
