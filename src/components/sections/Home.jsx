@@ -1,10 +1,11 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import { useRef } from "react";
+import { useRef, useState, useMemo } from "react";
+import * as THREE from "three";
 
 // Rotating GLTF model component with hardcoded URL
-const GLTF_URL = "https://raw.githubusercontent.com/swath1pen/bioreactor/main/public/scene1.gltf"; // <-- replace with your gltf/glb file URL
+const GLTF_URL = "https://raw.githubusercontent.com/swath1pen/bioreactor/main/public/scene1.gltf";
 
 function RotatingGLTF() {
   const group = useRef();
@@ -23,72 +24,116 @@ function RotatingGLTF() {
     </group>
   );
 }
-
-// optional: preload for performance
 useGLTF.preload(GLTF_URL);
 
+// Lightning bolt SVG as inline icon, flashes indefinitely
+const Lightning = () => (
+  <svg
+    className="inline-block ml-2 w-4 h-4 md:w-5 md:h-5 opacity-90 animate-lightning align-middle"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+  >
+    <path
+      d="M13 3v7h6l-8 11v-7H5L13 3z"
+      fill="#38bdf8"
+      stroke="#06b6d4"
+      strokeWidth="1.5"
+      strokeLinejoin="round"
+      filter="drop-shadow(0 0 4px #99f6e4)"
+    />
+  </svg>
+);
+
+// Reliable floating "bacteria" background adapted from top examples
+function OrganicsBackground({ count = 10000 }) {
+  const mesh = useRef();
+  const dummy = useMemo(() => new THREE.Object3D(), []);
+  const particles = useMemo(
+    () =>
+      Array.from({ length: count }, () => ({
+        time: Math.random() * 100,
+        factor: Math.random() * 20 + 10,
+        speed: Math.random() * 0.01 + 0.001,
+        x: Math.random() * 16 - 8,
+        y: Math.random() * 8 - 4,
+        z: Math.random() * 16 - 8,
+        elongate: Math.random() * 1.2 + 0.8 // For oval/rod look
+      })),
+    [count]
+  );
+
+  useFrame(() => {
+
+    particles.forEach((particle, i) => {
+      particle.time += particle.speed;
+      dummy.position.set(
+        particle.x + Math.cos((particle.time / 10) * particle.factor) + (Math.sin(particle.time) * particle.factor) / 10,
+        particle.y + Math.sin((particle.time / 10) * particle.factor) + (Math.cos(particle.time) * particle.factor) / 10,
+        particle.z + Math.cos((particle.time / 10) * particle.factor) + (Math.sin(particle.time) * particle.factor) / 10
+      );
+      // Stretched in Y for a bacteria/rod look
+      dummy.scale.set(0.03, 0.03 * particle.elongate, 0.03);
+      dummy.rotation.set(
+        Math.sin(particle.time * 0.7 + i) * 2.5,
+        Math.cos(particle.time * 0.3 + i) * 2.5,
+        Math.sin(particle.time * 0.5 + i) * 2.5
+      );
+      dummy.updateMatrix();
+      mesh.current.setMatrixAt(i, dummy.matrix);
+    });
+    mesh.current.instanceMatrix.needsUpdate = true;
+  });
+
+  return (
+    <instancedMesh ref={mesh} args={[null, null, count]}>
+      {/* You can try <dodecahedronGeometry args={[1]} /> for chunkier particles */}
+      <sphereGeometry args={[1, 8, 8]} />
+      {/* Use "white" for visible, or "#aaffbb" for pale green */}
+      <meshStandardMaterial color="teal" transparent opacity={0.94} />
+    </instancedMesh>
+  );
+}
+
 export const Home = () => {
+  const [showLightning, setShowLightning] = useState(false);
+
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center relative bg-black"
+      className="min-h-screen flex flex-col justify-center relative bg-black overflow-hidden"
     >
+      {/* Floating “bacteria/organics” animation background! */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
+          <ambientLight intensity={1.1} />
+          <OrganicsBackground count={100} />
+        </Canvas>
+      </div>
       <RevealOnScroll>
-      <div className="text-center z-10 px-2 pt-10 md:px-4 md:pt-24">
-        <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-6 bg-gradient-to-r from-cyan-100 to-blue-700 bg-clip-text text-transparent leading-tight">
-          BioEchem⚡Builds
-        </h1>
-        <p className="text-gray-400 text-sm sm:text-base md:text-lg mb-4 md:mb-8 max-w-xs sm:max-w-md md:max-w-lg mx-auto">
-          The increasing interdisciplinarity of biology requires an accessible toolkit.
-          This database provides fabrication solutions for bioelectrochemcial experiments
-          and serves as a repository to open-source custom builds for scientists.
-        </p>
-          {/* 3D object viewer centered and close to the title */}
+        <div className="relative z-10 px-2 pt-10 md:px-4 md:pt-24 text-center">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-6 
+            bg-gradient-to-r from-teal-600 to-cyan-400 bg-clip-text text-transparent leading-tight">
+            BioEchem
+            <span className="font-bold mb-3 md:mb-6 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent leading-tight">
+              ⚡Builds
+            </span>
+          </h1>
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg mb-4 md:mb-8 max-w-xs sm:max-w-md md:max-w-lg mx-auto">
+            The increasing interdisciplinarity of biology requires an accessible toolkit.
+            This serves as a repository to open-source custom builds for scientists.
+          </p>
           <div className="mx-auto my-6 w-full max-w-md h-64 rounded-xl bg-gray-800 flex items-center justify-center shadow-lg">
-            <Canvas
-              camera={{ position: [0, 0, 4] }}
-              style={{ background: 'black' }} // <-- add this line for black background
-            >
+            <Canvas camera={{ position: [0, 0, 4] }} style={{ background: 'black' }}>
               <ambientLight intensity={0.9} />
               <directionalLight position={[2, 2, 5]} />
               <RotatingGLTF />
               <OrbitControls />
             </Canvas>
           </div>
-          
           <div className="w-full flex justify-center items-center mt-8 mb-8 space-x-8">
-          <a
-            href="https://github.com/furstlab"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center"
-          >
-            <svg
-              className="w-8 h-8 fill-current text-white drop-shadow-lg transition"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path d="M12 .296c-6.6 0-12 5.4-12 12 0 5.3 3.438 9.799 8.207 11.387.6.113.793-.262.793-.583 0-.288-.011-1.244-.016-2.26-3.338.726-4.042-1.611-4.042-1.611-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.808 1.304 3.493.997.108-.775.418-1.304.762-1.605-2.665-.304-5.466-1.333-5.466-5.933 0-1.31.469-2.381 1.236-3.222-.124-.303-.535-1.524.117-3.176 0 0 1.008-.323 3.3 1.23.957-.266 1.984-.399 3.003-.404 1.018.005 2.045.138 3.003.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.874.119 3.176.77.841 1.234 1.912 1.234 3.222 0 4.61-2.803 5.625-5.473 5.924.429.37.823 1.1.823 2.219 0 1.604-.015 2.897-.015 3.293 0 .323.192.699.801.581C20.565 22.092 24 17.592 24 12.296c0-6.6-5.4-12-12-12"/>
-            </svg>
-          </a>
-          <a href="https://furstlab.mit.edu/" target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://raw.githubusercontent.com/swath1pen/bioreactor/main/logos/lab_logo.png"
-              alt="Furst Lab Logo"
-              className="w-12 h-auto mx-auto cursor-pointer opacity-90 hover:opacity-100 transition"
-            />
-          </a>
-          <a href="https://www.protocols.io/workspaces/furstlab" target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://raw.githubusercontent.com/swath1pen/bioreactor/main/logos/protocol_logo.png"
-              alt="protocol.io Logo"
-              className="w-12 h-auto mx-auto cursor-pointer opacity-90 hover:opacity-100 transition"
-            />
-          </a>
-        </div>
-
-
+            {/* ... Github & lab logos ... */}
+          </div>
           <div className="flex justify-center space-x-4">
             <a
               href="#projects"
@@ -98,15 +143,34 @@ export const Home = () => {
             </a>
             <a
               href="#contact"
-              className="border border-blue-500/50 text-blue-500 py-3 px-6 rounded font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-blue-500/10"
+              className="border border-blue-500/50 text-blue-500 py-3 px-6 rounded font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-blue-500/10 focus:outline-none relative flex items-center"
+              onMouseEnter={() => setShowLightning(true)}
+              onFocus={() => setShowLightning(true)}
+              onMouseLeave={() => setShowLightning(false)}
+              onBlur={() => setShowLightning(false)}
             >
-              Contact Us
+              Add Your Build
+              {showLightning && <Lightning />}
             </a>
           </div>
         </div>
       </RevealOnScroll>
+      <style>
+        {`
+          @keyframes lightning-burst {
+            0% { opacity: 0; transform: scale(0.6);}
+            25% { opacity: 1; transform: scale(1.18);}
+            70% { opacity: 1; transform: scale(1);}
+            100% { opacity: 0; transform: scale(0.7);}
+          }
+          .animate-lightning {
+            animation: lightning-burst 0.5s cubic-bezier(.38,1.29,.68,-0.21) infinite;
+          }
+        `}
+      </style>
     </section>
   );
 };
+
 
 
