@@ -1,7 +1,16 @@
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-<svg fill="#a8f5e2" width="256px" height="256px" viewBox="-32 -32 96.00 96.00" version="1.1" xmlns="http://www.w3.org/2000/svg" transform="rotate(45)" stroke="#a8f5e2" stroke-width="0.00032">
-<g id="SVGRepo_bgCarrier" stroke-width="0"/>
-<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.192"/>
-<g id="SVGRepo_iconCarrier"> <title>lightning-bolt</title> <path d="M23.5 13.187h-7.5v-12.187l-7.5 17.813h7.5v12.187l7.5-17.813z"/> </g>
-</svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 246.51">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #a8f5e2;
+        stroke: #a8f5e2;
+        stroke-miterlimit: 10.67;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g id="SVGRepo_iconCarrier" data-name="SVGRepo iconCarrier">
+    <path class="cls-1" d="M110,100.14H55V0L0,146.37H55v100.14L110,100.14Z"/>
+  </g>
+</svg>
