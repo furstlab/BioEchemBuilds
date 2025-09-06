@@ -39,7 +39,7 @@ export const Contact = () => {
                   <span className="font-bold bg-gradient-to-r from-cyan-600 to-blue-700 bg-clip-text text-transparent ml-1">
                     ⚡Builds
                   </span>{' '}
-                  example_build_repo repository.
+                  example build_page GitHUb repository.
                   <a
                     href="https://github.com/furstlab/example_build_repo"
                     target="_blank"
