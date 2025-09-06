@@ -107,7 +107,7 @@ export const About = () => {
             {/* BUTTON: Add Your Build! */}
             <div className="flex justify-center mb-8">
               <a
-                href="https://github.com/furstlab/example_build_repo"
+                href="https://github.com/swath1pen/build_page"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border border-blue-500/50 text-blue-500 py-3 px-8 rounded font-bold text-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-blue-500/10 focus:outline-none relative flex items-center"
